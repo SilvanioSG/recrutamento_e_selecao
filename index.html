@@ -2,11 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Relatório Técnico – Contratações e Enviesamento</title>
-
-<!-- Fonte Google Roboto -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Relatório Técnico – Contratações e Enviesamento</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <style>
     body {
         font-family: 'Roboto', Arial, sans-serif;
@@ -26,12 +23,30 @@
         max-width: 900px;
         margin: auto;
         padding: 0 30px;
+        /* Flexbox para alinhar foto (esquerda) e texto (direita) */
+        display: flex; 
+        align-items: center; 
+        justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+    }
+    .header-text {
+        margin-left: 20px; /* Espaço entre a foto e o texto */
     }
     .header-text strong {
         font-size: 17px;
         display: block;
         margin-bottom: 5px;
     }
+    
+    /* Estilo para a foto de perfil */
+    .profile-photo {
+        width: 80px; 
+        height: 80px;
+        border-radius: 50%; 
+        object-fit: cover; 
+        border: 2px solid white; 
+        /* Removido margin-left e adicionado margin-right para a nova posição */
+    }
+
     .container {
         padding: 30px;
         max-width: 900px;
@@ -108,13 +123,33 @@
     footer a:hover {
         color: #ffffff;
     }
+
+    /* MEDIA QUERY PARA RESPONSIVIDADE (Telas Pequenas) */
+    @media (max-width: 600px) {
+        .header-content {
+            flex-direction: column; /* Empilha a foto e o texto verticalmente */
+            align-items: flex-start; /* Alinha tudo à esquerda */
+        }
+        .header-text {
+            margin-left: 0; /* Remove a margem esquerda */
+            margin-top: 15px; /* Adiciona espaço acima do texto */
+        }
+        .profile-photo {
+            margin-bottom: 0; /* Garante que não haja margem indesejada */
+        }
+        .container {
+            padding: 20px; /* Reduz o padding do container para telas menores */
+            margin: 20px auto;
+        }
+    }
 </style>
 </head>
 <body>
 
-<!-- Cabeçalho -->
 <div class="header">
     <div class="header-content">
+        <img src="SG_Executivo-removebg-preview.png" alt="Foto de Perfil de Silvanio Gois" class="profile-photo">
+        
         <div class="header-text">
             <strong>Silvanio Gois — Técnico em Administração e Edificações</strong>
             Graduando em Processos Gerenciais<br>
@@ -200,12 +235,10 @@
 <strong>Conclusão:</strong><br>
 Nem toda contratação reflete a necessidade real da empresa. Processos estruturados, uso de métricas e mitigação de vieses aumentam a eficiência, alinhamento estratégico e retorno sobre investimento em capital humano.
 </div>
-
 </div>
 
 <footer>
 © 2025 Silvanio Gois — Todos os direitos reservados | <a href="https://www.silvaniogois.com.br">Retornar ao site</a>
 </footer>
-
 </body>
 </html>
