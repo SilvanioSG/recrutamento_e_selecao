@@ -1,244 +1,608 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Relatório Técnico – Contratações e Enviesamento</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-    body {
-        font-family: 'Roboto', Arial, sans-serif;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        background-color: #f1f4f8;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Relatório Estratégico | Mitigação de Vieses em Seleção</title>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .header {
-        background-color: #27628d;
-        color: white;
-        padding: 20px 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    .header-content {
-        max-width: 900px;
-        margin: auto;
-        padding: 0 30px;
-        /* Flexbox para alinhar foto (esquerda) e texto (direita) */
-        display: flex; 
-        align-items: center; 
-        justify-content: flex-start; /* Alinha o conteúdo à esquerda */
-    }
-    .header-text {
-        margin-left: 20px; /* Espaço entre a foto e o texto */
-    }
-    .header-text strong {
-        font-size: 17px;
-        display: block;
-        margin-bottom: 5px;
-    }
-    
-    /* Estilo para a foto de perfil */
-    .profile-photo {
-        width: 80px; 
-        height: 80px;
-        border-radius: 50%; 
-        object-fit: cover; 
-        border: 2px solid white; 
-        /* Removido margin-left e adicionado margin-right para a nova posição */
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f8fe;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
 
-    .container {
-        padding: 30px;
-        max-width: 900px;
-        margin: 30px auto;
-        background-color: white;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        border-radius: 6px;
-    }
+        :root {
+            --primary: rgb(39, 98, 141);
+            --primary-dark: #1f4d6e;
+            --primary-light: #eef3fa;
+            --accent: #ffae42;
+            --gray-light: #f9fafc;
+            --border-light: #e2edf2;
+        }
 
-    h1, h2 {
-        color: #27628d;
-        margin-top: 25px;
-        font-weight: 600;
-    }
+        /* ========= CABEÇALHO ========= */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.8rem 0;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            border-bottom: 3px solid var(--accent);
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
-    th, td {
-        border: 1px solid #27628d;
-        padding: 12px;
-        text-align: left;
-        font-size: 14px;
-    }
-    th {
-        background-color: #27628d;
-        color: white;
-        font-weight: 500;
-    }
-    tbody tr:hover {
-        background-color: #f0f6fb;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-
-    .pros { color: #2e7d32; font-weight: bold; }
-    .risk { color: #b33a3a; font-weight: bold; }
-
-    .bar-bg {
-        background-color: #e0e0e0;
-        height: 18px;
-        border-radius: 5px;
-        margin-bottom: 8px;
-    }
-    .bar-fill {
-        height: 18px;
-        border-radius: 5px;
-        background-color: #27628d;
-    }
-
-    .highlight-box {
-        border: 1px solid #27628d;
-        background-color: #edf3f7;
-        padding: 15px;
-        margin-top: 20px;
-        border-radius: 5px;
-    }
-
-    footer {
-        background-color: #27628d;
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 12px;
-        margin-top: 40px;
-    }
-    footer a {
-        color: #dce9f2;
-        text-decoration: underline;
-        transition: color 0.2s;
-    }
-    footer a:hover {
-        color: #ffffff;
-    }
-
-    /* MEDIA QUERY PARA RESPONSIVIDADE (Telas Pequenas) */
-    @media (max-width: 600px) {
         .header-content {
-            flex-direction: column; /* Empilha a foto e o texto verticalmente */
-            align-items: flex-start; /* Alinha tudo à esquerda */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-        .header-text {
-            margin-left: 0; /* Remove a margem esquerda */
-            margin-top: 15px; /* Adiciona espaço acima do texto */
+
+        .header-photo {
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .profile-photo {
-            margin-bottom: 0; /* Garante que não haja margem indesejada */
+
+        .header-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s;
         }
+
+        .header-photo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-photo:hover img {
+            transform: scale(1.02);
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .header-info h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .header-info .tagline {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 40px;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .contact-link:hover {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ========= CONTAINER PRINCIPAL ========= */
         .container {
-            padding: 20px; /* Reduz o padding do container para telas menores */
-            margin: 20px auto;
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            padding: 2rem 2.5rem;
+            transition: box-shadow 0.2s;
         }
-    }
-</style>
+
+        .container:hover {
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-dark);
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 1.8rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: var(--gray-light);
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 250px;
+            border: 1px solid var(--border-light);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 20px rgba(39, 98, 141, 0.12);
+            background: white;
+        }
+
+        .card i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .card strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.8rem 0;
+            font-size: 0.95rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        td {
+            border: 1px solid var(--border-light);
+            padding: 12px 16px;
+            vertical-align: top;
+            background-color: #ffffff;
+            transition: background 0.2s;
+        }
+
+        tr:hover td {
+            background-color: var(--primary-light);
+        }
+
+        .pros {
+            color: #2b6e3c;
+            font-weight: 500;
+        }
+
+        .risk {
+            color: #b13e3e;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: var(--primary-light);
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem 1.8rem;
+            margin: 2rem 0 1rem;
+            border-radius: 16px;
+            transition: all 0.2s;
+        }
+
+        .highlight-box:hover {
+            background: #e3f0f7;
+            transform: translateX(4px);
+        }
+
+        .pill {
+            background-color: var(--border-light);
+            color: var(--primary-dark);
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        ul li i {
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* Nota única (contexto + metodologia) */
+        .single-note {
+            background-color: #fef7e0;
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 2rem 0 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #5a4a1a;
+        }
+
+        /* ========= BOTÃO VOLTAR AO TOPO ========= */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-dark);
+            color: #dcecf5;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0.4rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 720px) {
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .header-info {
+                text-align: center;
+            }
+            .header-info .tagline {
+                justify-content: center;
+            }
+            .container {
+                padding: 1.5rem;
+                margin: 1.2rem;
+            }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th {
+                display: none;
+            }
+            td {
+                border: none;
+                position: relative;
+                padding-left: 40%;
+                border-bottom: 1px solid var(--border-light);
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                font-weight: 700;
+                color: var(--primary);
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div class="header">
     <div class="header-content">
-        <img src="SG_Executivo-removebg-preview.png" alt="Foto de Perfil de Silvanio Gois" class="profile-photo">
-        
-        <div class="header-text">
-            <strong>Silvanio Gois — Técnico em Administração e Edificações</strong>
-            Graduando em Processos Gerenciais<br>
-            sg@silvaniogois.com.br | www.silvaniogois.com.br
+        <div class="header-photo">
+            <img src="Gestão_SG.PNG" alt="Silvanio Gois, Executivo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/27628d/white?text=SG';">
+        </div>
+        <div class="header-info">
+            <h1>Silvanio Gois</h1>
+            <div class="tagline">
+                <i class="fas fa-chart-line"></i> <span>Estratégia de gente baseada em dados reais</span>
+                <i class="fas fa-briefcase" style="margin-left: 8px;"></i> <span>Estudo Estratégico | People Analytics</span>
+            </div>
+            <a href="https://wa.me/5513988301094?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20relat%C3%B3rio%20estrat%C3%A9gico" 
+               class="contact-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> Contato
+            </a>
         </div>
     </div>
 </div>
 
 <div class="container">
+    <h1><i class="fas fa-chart-pie" style="font-size: 1.8rem; margin-right: 12px;"></i> Relatório Estratégico: Vieses em Contratações e o Impacto na Performance Organizacional</h1>
+    <p>Este relatório apoia líderes e profissionais de RH na identificação, análise e mitigação de vieses cognitivos nos processos seletivos. Baseado em práticas reconhecidas de <strong>People Analytics</strong> e gestão por competências, oferece diagnóstico sem dados fictícios e recomendações aplicáveis à realidade corporativa.</p>
 
-<h1>Relatório Técnico: Contratações e Enviesamento em Corporações</h1>
-<p>Este relatório analisa os impactos do enviesamento humano nas decisões de contratação corporativa, avaliando os prós e contras dessas decisões em relação às necessidades reais da empresa.</p>
+    <h2><i class="fas fa-chart-simple"></i> 1. Contexto e Relevância Estratégica</h2>
+    <p>Decisões de contratação enviesadas geram custos tangíveis e intangíveis: retrabalho, turnover não planejado, desalinhamento cultural e perda de diversidade cognitiva. Estudos setoriais indicam que empresas com processos seletivos estruturados reduzem significativamente a rotatividade precoce. O foco deve estar na objetividade e rastreabilidade das decisões.</p>
 
-<h2>2. Enviesamento Corporativo</h2>
-<p>Tipos frequentes de viés: Afinidade, Confirmatório, Ancoragem, Efeito Halo/Horn, e viés de gênero, idade ou etnia.</p>
+    <div class="card-grid">
+        <div class="card">
+            <i class="fas fa-coins"></i>
+            <strong>Custo de uma má contratação</strong>
+            Pode representar de 30% a 150% do salário anual do cargo, considerando recrutamento, integração e produtividade perdida.
+        </div>
+        <div class="card">
+            <i class="fas fa-brain"></i>
+            <strong>Viés mais comum</strong>
+            Viés de afinidade – tendência a favorecer candidatos com interesses ou origens semelhantes às do entrevistador.
+        </div>
+        <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <strong>ROI de práticas estruturadas</strong>
+            Entrevistas baseadas em evidências e avaliações cegas aumentam a precisão preditiva de desempenho futuro.
+        </div>
+    </div>
 
-<h2>3. Técnicas de Mitigação de RH</h2>
-<ul>
-<li>Entrevistas estruturadas com critérios objetivos</li>
-<li>Análise cega de currículos</li>
-<li>Treinamento de conscientização de vieses</li>
-<li>Painéis decisórios diversos</li>
-<li>Auditorias internas e métricas de RH</li>
-</ul>
+    <h2><i class="fas fa-list-ul"></i> 2. Tipos de Enviesamento mais Frequentes</h2>
+    <ul>
+        <li><i class="fas fa-user-friends"></i> <strong>Viés de afinidade:</strong> preferência por pessoas que compartilham gostos ou histórico pessoal.</li>
+        <li><i class="fas fa-check-double"></i> <strong>Viés confirmatório:</strong> busca por informações que validem uma impressão inicial.</li>
+        <li><i class="fas fa-sun"></i> <strong>Efeito Halo / Horn:</strong> uma característica marcante contamina a avaliação global.</li>
+        <li><i class="fas fa-anchor"></i> <strong>Ancoragem:</strong> a primeira informação define parâmetros desproporcionais.</li>
+        <li><i class="fas fa-venus-mars"></i> <strong>Viés de gênero, idade ou origem:</strong> associações implícitas que desconsideram competências reais.</li>
+    </ul>
 
-<h2>4. Tabela de Prós e Riscos</h2>
+    <h2><i class="fas fa-building"></i> 3. Impactos na Gestão Corporativa</h2>
+    <ul>
+        <li><i class="fas fa-tachometer-alt"></i> <strong>Produtividade:</strong> profissionais mal alinhados geram baixa performance e sobrecarga para a equipe.</li>
+        <li><i class="fas fa-users"></i> <strong>Retenção:</strong> altas taxas de turnover (especialmente nos primeiros 6 meses) indicam falhas na seleção.</li>
+        <li><i class="fas fa-hand-sparkles"></i> <strong>Clima e cultura:</strong> decisões percebidas como injustas corroem a confiança interna.</li>
+        <li><i class="fas fa-lightbulb"></i> <strong>Inovação:</strong> ambientes homogêneos tendem a ter menor criatividade e baixa resolução de problemas complexos.</li>
+    </ul>
 
-<table>
-<thead>
-<tr>
-    <th>Aspecto</th>
-    <th>Prós</th>
-    <th>Riscos</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-    <td>Alinhamento real à demanda</td>
-    <td class="pros">Produtividade, ROI, retenção</td>
-    <td class="risk">Pouco risco (planejamento falho)</td>
-</tr>
-<tr>
-    <td>Pressão de contratação</td>
-    <td class="pros">Rapidez</td>
-    <td class="risk">Alta rotatividade, gasto excessivo</td>
-</tr>
-<tr>
-    <td>Interferência política</td>
-    <td class="pros">Atende interesses internos</td>
-    <td class="risk">Desalinhamento com estratégia</td>
-</tr>
-<tr>
-    <td>Enviesamento</td>
-    <td class="pros">Decisão rápida</td>
-    <td class="risk">Competência real ignorada</td>
-</tr>
-<tr>
-    <td>Perfil idealizado</td>
-    <td class="pros">Talento atrativo</td>
-    <td class="risk">Produção baixa na prática</td>
-</tr>
-</tbody>
-</table>
+    <h2><i class="fas fa-table-list"></i> 4. Matriz de Prós e Riscos – Decisões sob Viés</h2>
+    <table>
+        <thead>
+            <tr><th>Aspecto da decisão</th><th>Prós (curto prazo / aparentes)</th><th>Riscos (estratégicos / financeiros)</th></tr>
+        </thead>
+        <tbody>
+            <tr><td data-label="Aspecto">Contratação por “cultura fit” rígido</td>
+                <td class="pros" data-label="Prós">Integração rápida, baixo atrito inicial</td>
+                <td class="risk" data-label="Riscos">Grupo homogêneo, estagnação, exclusão de talentos diversos</td>
+            </tr>
+            <tr><td data-label="Aspecto">Pressão para fechar vaga (urgência)</td>
+                <td class="pros" data-label="Prós">Preenchimento ágil, redução de sobrecarga temporária</td>
+                <td class="risk" data-label="Riscos">Alta probabilidade de desligamento precoce, custos de novo processo</td>
+            </tr>
+            <tr><td data-label="Aspecto">Indicação política ou hierárquica (Q.I.)</td>
+                <td class="pros" data-label="Prós">Agilidade na triagem, sensação de confiança</td>
+                <td class="risk" data-label="Riscos">Desalinhamento com competências reais, conflito de interesses</td>
+            </tr>
+            <tr><td data-label="Aspecto">Decisão baseada apenas em currículo “perfeito”</td>
+                <td class="pros" data-label="Prós">Candidato com histórico impressionante</td>
+                <td class="risk" data-label="Riscos">Overqualification ou falta de aderência à entrega prática</td>
+            </tr>
+            <tr><td data-label="Aspecto">Entrevista sem roteiro (livre)</td>
+                <td class="pros" data-label="Prós">Flexibilidade, “feeling” do gestor</td>
+                <td class="risk" data-label="Riscos">Baixa confiabilidade entre avaliadores, viés de contraste</td>
+            </tr>
+        </tbody>
+    </table>
 
-<h2>5. Indicadores (Referência de Mercado)</h2>
+    <h2><i class="fas fa-tools"></i> 5. Técnicas de Mitigação com Evidência de Eficácia</h2>
+    <ul>
+        <li><i class="fas fa-clipboard-list"></i> <strong>Entrevistas estruturadas por competências:</strong> perguntas idênticas com escalas pré-definidas.</li>
+        <li><i class="fas fa-eye-slash"></i> <strong>Análise cega de currículos:</strong> remoção de nome, gênero, idade e foto na triagem.</li>
+        <li><i class="fas fa-chalkboard-user"></i> <strong>Treinamento em vieses implícitos:</strong> sessões periódicas com cases reais.</li>
+        <li><i class="fas fa-people-arrows"></i> <strong>Painéis diversos de avaliação:</strong> ao menos três avaliadores de áreas/gêneros diferentes.</li>
+        <li><i class="fas fa-balance-scale"></i> <strong>Critérios de desempate pré-definidos:</strong> pesos e regras antes das entrevistas.</li>
+        <li><i class="fas fa-chart-simple"></i> <strong>Auditoria de dados de RH:</strong> monitorar taxas de aprovação por grupo demográfico.</li>
+    </ul>
 
-<p>Taxa de turnover (até 20% é considerada alta):</p>
-<div class="bar-bg">
-    <div class="bar-fill" style="width: 20%;"></div>
-</div>
+    <h2><i class="fas fa-chart-line"></i> 6. Indicadores para Monitoramento Contínuo</h2>
+    <ul>
+        <li><i class="fas fa-door-open"></i> <strong>Turnover por motivo (primeiros 12 meses):</strong> separar desligamentos voluntários de baixo desempenho.</li>
+        <li><i class="fas fa-chart-simple"></i> <strong>Taxa de aprovação em etapas por grupo demográfico:</strong> identificar barreiras invisíveis.</li>
+        <li><i class="fas fa-hourglass-half"></i> <strong>Tempo médio de integração até produtividade plena:</strong> quanto maior, maior a chance de mismatch.</li>
+        <li><i class="fas fa-star-of-life"></i> <strong>Desempenho médio pós-contratação (avaliação 360 ou metas).</strong></li>
+        <li><i class="fas fa-file-signature"></i> <strong>Índice de aderência ao processo estruturado:</strong> % de vagas com entrevista objetiva.</li>
+    </ul>
+    <p><span class="pill"><i class="fas fa-chart-simple"></i> Benchmark setorial</span> Para posições operacionais, taxas de turnover acima de 30% ao ano merecem investigação; para posições estratégicas, acima de 15% já requerem análise do processo seletivo. (Referências gerais – calibrar internamente).</p>
 
-<p>Contratações alinhadas à necessidade real (meta 60-70%):</p>
-<div class="bar-bg">
-    <div class="bar-fill" style="width: 65%;"></div>
-</div>
+    <h2><i class="fas fa-road"></i> 7. Recomendações Estratégicas – Plano de Ação</h2>
+    <div class="card-grid">
+        <div class="card">
+            <i class="fas fa-hourglass-start"></i>
+            <strong>🔹 Fase 1 (30 dias)</strong><br>
+            Diagnóstico: revisar últimos 12 meses de contratações, calcular turnover precoce e realizar workshop de vieses com líderes.
+        </div>
+        <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <strong>🔸 Fase 2 (60 a 90 dias)</strong><br>
+            Implementar triagem cega, desenhar roteiro de entrevista por competências e criar painel diverso nos comitês seletivos.
+        </div>
+        <div class="card">
+            <i class="fas fa-chart-simple"></i>
+            <strong>🔹 Fase 3 (contínuo)</strong><br>
+            Auditoria trimestral de métricas, revisão anual dos critérios de desempate e gamificação do treinamento de recrutadores.
+        </div>
+    </div>
 
-<p>Redução de vieses após treinamento (10-25%):</p>
-<div class="bar-bg">
-    <div class="bar-fill" style="width: 20%;"></div>
-</div>
+    <div class="highlight-box">
+        <i class="fas fa-chart-pie" style="font-size: 1.4rem; margin-right: 10px; color: var(--primary);"></i>
+        <strong> Conclusão para a alta liderança:</strong><br>
+        O enviesamento inconsciente não é uma falha moral, mas um risco operacional. Empresas que tratam a mitigação de vieses como parte da estratégia de <strong>People Analytics</strong> aumentam a precisão preditiva de suas contratações, reduzem custos de rotatividade e constroem times mais resilientes. Recomenda-se a criação de um comitê permanente de qualificação do recrutamento, com metas qualitativas e revisão periódica dos indicadores propostos.
+    </div>
 
-<div class="highlight-box">
-<strong>Conclusão:</strong><br>
-Nem toda contratação reflete a necessidade real da empresa. Processos estruturados, uso de métricas e mitigação de vieses aumentam a eficiência, alinhamento estratégico e retorno sobre investimento em capital humano.
-</div>
+    <!-- NOTA ÚNICA (contexto + metodologia) – sem redundância -->
+    <div class="single-note">
+        <i class="fas fa-info-circle" style="margin-right: 8px;"></i> 
+        <strong>Nota sobre este documento:</strong> Trata-se de um <strong>modelo de relatório estratégico</strong>, desenvolvido para demonstrar competência em People Analytics e mitigação de vieses em processos seletivos. Os conceitos, benchmarks e indicadores apresentados são baseados em práticas reconhecidas de mercado (SHRM, CIPD) e <strong>não refletem dados específicos de nenhuma organização</strong>. Recomenda-se a devida calibração à realidade de cada empresa antes de qualquer tomada de decisão.
+    </div>
 </div>
 
 <footer>
-© 2025 Silvanio Gois — Todos os direitos reservados | <a href="https://www.silvaniogois.com.br">Retornar ao site</a>
+    <div class="footer-content">
+        <p>© 2026 Silvanio Gois - Todos os direitos reservados</p>
+        <p>
+            <a href="https://www.silvaniogois.com.br/" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <i class="fas fa-external-link-alt"></i> ir ao Site
+            </a>
+        </p>
+        <p class="footer-quote">
+            <i class="fas fa-quote-left"></i> Da estratégia à operação, conectando processos, pessoas e resultados
+        </p>
+    </div>
 </footer>
+
+<!-- Botão Voltar ao Topo -->
+<a href="#" class="back-to-top" id="backToTopBtn" aria-label="Voltar ao topo">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<script>
+    (function() {
+        const btn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        });
+        
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    })();
+</script>
 </body>
 </html>
